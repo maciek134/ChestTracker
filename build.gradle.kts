@@ -9,7 +9,7 @@ import red.jackf.UpdateDependenciesTask
 
 plugins {
 	id("maven-publish")
-	id("fabric-loom") version "1.6-SNAPSHOT"
+	id("fabric-loom") version "1.7-SNAPSHOT"
 	id("com.github.breadmoirai.github-release") version "2.4.1"
 	id("org.ajoberstar.grgit") version "5.2.1"
 	id("me.modmuss50.mod-publish-plugin") version "0.3.3"
@@ -41,6 +41,13 @@ val isBundlingSearchables = properties["bundle_searchables"] == "true"
 
 base {
 	archivesName.set("${properties["archives_base_name"]}")
+}
+
+tasks.wrapper {
+    gradleVersion = "8.8"
+    // You can either download the binary-only version of Gradle (BIN) or
+    // the full version (with sources and documentation) of Gradle (ALL)
+    distributionType = Wrapper.DistributionType.ALL
 }
 
 repositories {
